@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+
+        // .map() does not mutate the original array
+        // .map() receives a callback as an argument
+        // .map() returns a new array with the same length than the original one
+
+        // the argumented callback has a default parameter: each array position
+        // Each position from the new array will have the returned value on each iteration
+
+
+
+
+        // Example 1
+        const numbers1 = [5, 4, 5, 3, 4]
+
+
+        // // forEach alternative
+        // const doubled = []
+        // numbers1.forEach(eachNumber => {
+        //     doubled.push(eachNumber * 2)
+        // })
+
+
+        const doubled = numbers1.map(eachNumber => {
+            return eachNumber * 2
+        })
+
+        console.log('original array', numbers1)
+        console.log('mapped array', doubled)
+
+
+
+
+        // Example 2
+        const cities = ['madrid', 'berlin', 'valencia', 'gijón']
+
+        const capitalized = cities.map(eachCity => {
+            const firstLetter = eachCity.charAt(0).toUpperCase()
+            const rest = eachCity.substring(1)
+            return firstLetter + rest
+        })
+
+        console.log('Ciudades capitalizadas:', capitalized)
+
+
+
+
+        // Example 3
+        const students = [
+            {
+                name: 'Tony Parker',
+                firstProject: 80,
+                secondProject: 75,
+                finalExam: 90
+            },
+            {
+                name: 'Marc Barchini',
+                firstProject: 84,
+                secondProject: 65,
+                finalExam: 65
+            },
+            {
+                name: 'Claudia Lopez',
+                firstProject: 45,
+                secondProject: 95,
+                finalExam: 99
+            },
+            {
+                name: 'Alvaro Briattore',
+                firstProject: 82,
+                secondProject: 92,
+                finalExam: 70
+            }
+        ]
+
+
+        // Only final grades
+        const onlyGrades = students.map(eachStudent => {
+            const projectsAvg = (eachStudent.firstProject + eachStudent.secondProject) / 2
+            const finalGrade = (projectsAvg * .4) + (eachStudent.finalExam * .6)
+            return finalGrade.toFixed(2)
+        })
+
+        console.log('Solo notas', onlyGrades)
+
+
+
+        // Final grades & names
+        const withName = students.map(eachStudent => {
+
+            const projectsAvg = (eachStudent.firstProject + eachStudent.secondProject) / 2
+            const finalGrade = (projectsAvg * .4) + (eachStudent.finalExam * .6)
+
+            const student = {
+                name: eachStudent.name,
+                grade: finalGrade.toFixed(2)
+            }
+
+            return student
+        })
+
+        console.log('Con nombre', withName)
+
+
+
+
+        // All info
+        const allInfo = students.map(eachStudent => {
+
+            const projectsAvg = (eachStudent.firstProject + eachStudent.secondProject) / 2
+            const finalGrade = (projectsAvg * .4) + (eachStudent.finalExam * .6)
+
+            const student = {
+                ...eachStudent,                 // spread operator - operador de propagación
+                grade: finalGrade.toFixed(2)
+            }
+
+            return student
+        })
+
+        console.log('Con todo', allInfo)
+
+
+    </script>
+</body>
+
+</html>

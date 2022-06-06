@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        // .reduce() does not mutate the original array
+        // .reduce() receives a callback as an argument
+        // .reduce() returns a single value from accumulating values from the array
+
+        // the argumented callback has TWO default parameters: accumulator and each array position
+        // the accumulator value will be array's first value for the first iteration
+        // the accumulator value will be the returned value for the rest of the iterations
+
+        // .reduce() accepts a second optional argument: initial accumulator
+
+
+
+
+        // Example 1
+        const numbers1 = [2, 9, 4, 8]
+        console.log('El array original: ', numbers1)
+
+        console.log('------')
+
+        const numbersSum1 = numbers1.reduce((acc, eachNumber) => {
+            console.log('El valor del acumulador es', acc)
+            console.log('El valor iterado es', eachNumber)
+            console.log('VOY A RETORNAR', acc + eachNumber)
+            console.log('------')
+            return acc + eachNumber
+        })
+
+        console.log('El sumatorio es', numbersSum1)
+
+
+
+
+
+        // Example 2
+        const numbers2 = [20, 90, 40, 80]
+
+        const numbersSum2 = numbers2.reduce((acc, eachNumber) => {
+            return acc + eachNumber
+        })
+
+        console.log('El sumatorio es', numbersSum2)
+
+
+
+
+        // Example 3
+        const strings = ['POPINO', 'IS', 'THE', 'BEST', 'DOGGY']
+
+        const stringsSum = strings.reduce((acc, eachStr) => {
+            return acc + eachStr
+        })
+
+        console.log('El sumatorio es', stringsSum)
+
+
+
+
+
+        // Example 3
+        const people = [
+            { name: 'Candice', age: 25 },
+            { name: 'Tammy', age: 30 },
+            { name: 'Allen', age: 20 },
+            { name: 'Nettie', age: 21 },
+            { name: 'Stuart', age: 17 },
+            { name: 'Bill', age: 19 }
+        ]
+
+
+
+        // try 1: returning age from object -> BAD??
+        const sumAge3 = people.reduce((acc, eachPerson) => {
+            return acc + eachPerson.age
+        })
+
+        // Los años totales son [object Object]3020211719
+        console.log('Los años totales son', sumAge3)
+
+
+
+
+
+        // try 2: returning age from object + setting inicial acc -> SUCCESS
+        const sumAge4 = people.reduce((acc, eachPerson) => {
+            return acc + eachPerson.age
+        }, 0)       // <- ojo
+
+        console.log('Los años totales son', sumAge4)
+
+
+
+
+
+
+
+
+
+        // Example 4
+        const product = {
+            name: 'AmazonBasics Apple Certified Lightning to USB Cable',
+            price: 7.99,
+            manufacturer: 'Amazon',
+            reviews: [
+                { user: 'Pavel Nedved', comments: 'It was really useful, strongly recommended', rate: 4 },
+                { user: 'Alvaro Trezeguet', comments: 'It lasted 2 days', rate: 1 },
+                { user: 'David Recoba', comments: 'Awesome', rate: 5 },
+                { user: 'Jose Romero', comments: 'Good value for money', rate: 4 },
+                { user: 'Antonio Cano', comments: 'It broked really fast', rate: 2 }
+            ]
+        }
+
+
+
+        const sumRatings = product.reviews.reduce((acc, eachReview) => {
+            return acc + eachReview.rate
+        }, 0)
+
+
+        console.log('El rating medio es', sumRatings / product.reviews.length)
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
