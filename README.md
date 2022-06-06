@@ -7,12 +7,6 @@
 > JS | Reference VS value / Shadow copy VS deep copy
 
 
-## Main points: truthies VS falsies
-
-Los valores _falsies_ (`null, undefined, false, NaN, 0, ''`) son rechazados por defecto en las estructuras condicionales. Todos los demás (_truthys_) son aceptados por defecto.
-
-
-
 ## Main points: array advanced methods
 
 Los métodos `.map()`, `.filter()` y `.reduce()` son métodos del objeto Array que **no mutan el array original**.
